@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+<div>
+  <section>
+    <h1>Posts</h1>
+    <p>
+      <ul>
+        {% for post in site.posts %}
+          {% capture day %}{{ post.date | date: '%m%d%Y' }}{% endcapture %}
+          {% capture nday %}{{ post.next.date | date: '%m%d%Y' }}{% endcapture %}
+          <li>
+            {{ post.date | date: "%B %e, %Y" }}, <a href="{{ post.url }}">{{ post.title }}</a>
+            {{ post.content | strip_html | truncatewords:10 }}
+          </li>
+        {% endfor %}
+      </ul>
+    </p>
+  </section>
+
+  <section>
+    <h2>Subscribe</h2>
+    <p>
+      subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>
+    </p>
+  </section>
+</div>
